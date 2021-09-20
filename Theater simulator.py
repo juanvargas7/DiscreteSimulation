@@ -47,7 +47,7 @@ def go_to_movies(env,person, theater):
     
     with theater.cashiers.request() as request:
         yield request
-        yield env.process(theater.purchase_ticket(person))
+        yield env.timeout(rn.randint(1,3))
     
     with theater.ushers.request() as request:
         yield request
